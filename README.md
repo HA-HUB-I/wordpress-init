@@ -1,26 +1,11 @@
 # wordpress-init
 
 Bedrock Structure
-!description Keep Folders and Files
-├── config  
-    ├── environments
-├── development.php
-├── staging.php
-├── web
-│ ├── app/mu-plugins/bedrock-autoloader.php
-│ ├── .htaccess
-│ ├── index.php
-│ ├── wp-config.php
-├── create_database.php - config for first run
-├── .env.local - set config for wordpress & create_database.php
-├── composer.json
-├──
-
 <div align='center'>
 
 # Keep Folders and Files
 
-* 
+*
 Keep Folders and Files
 ├── config  
     ├── environments
@@ -37,6 +22,12 @@ Keep Folders and Files
 ├──*
 
 </div>
+!`Require composer library Info
+"require":
+"php": "^8.3", minimum php
+"composer/installers": folder structure , package type to install to path map installer-paths
+"vlucas/phpdotenv": Loads environment variables from .env to getenv(), $\_ENV and $\_SERVER automagically.`
+
 
 Require composer library Info
 "require":
