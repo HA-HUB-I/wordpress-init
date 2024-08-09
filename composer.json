@@ -1,0 +1,87 @@
+{
+  "name": "incloud/wordpress",
+  "description": "InCloud WordPress site.",
+  "type": "project",
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://wpackagist.org",
+      "only": ["wpackagist-plugin/*", "wpackagist-theme/*"]
+    }
+  ],
+  "require": {
+    "php": ">=8.0",
+    "composer/installers": "^2.2",
+    "vlucas/phpdotenv": "^5.5",
+    "oscarotero/env": "^2.1",
+    "roots/bedrock-autoloader": "^1.0",
+    "roots/bedrock-disallow-indexing": "^2.0",
+    "roots/wordpress": "6.6.1",
+    "roots/wp-config": "1.0.0",
+    "roots/wp-password-bcrypt": "1.1.0",
+    "wpackagist-theme/twentytwentyfour": "^1.0",
+    "wpackagist-plugin/woocommerce": "^9.1",
+    "plugin/fake-sync-store" : "1.2.3",
+    "roots/wp-stage-switcher": "~2.1"
+
+  },
+
+"repositories": [
+    {
+        "type": "package",
+        "package": {
+            "name": "plugin/fake-sync-store",
+            "type": "wordpress-plugin",
+            "version": "1.2.3",
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/HA-HUB-I/fake-store-sync/archive/refs/tags/1.2.3.zip"}
+        }
+    },
+    {
+      "type": "composer",
+      "url": "https://wp-languages.github.io"
+  },
+  {
+    "type": "composer",
+    "url": "https://wpackagist.org"
+}
+],
+
+  "require-dev": {
+    "squizlabs/php_codesniffer": "^3.7.1",
+    "roave/security-advisories": "dev-latest"
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "preferred-install": "dist",
+    "allow-plugins": {
+      "composer/installers": true,
+      "roots/wordpress-core-installer": true
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "extra": {
+    "installer-paths": {
+      "web/app/mu-plugins/{$name}/": ["type:wordpress-muplugin" , "roots/wp-stage-switcher" , "wpackagist-plugin/woocommerce"],
+      "web/app/plugins/{$name}/": ["type:wordpress-plugin"],
+      "web/app/themes/{$name}/": ["type:wordpress-theme"]
+    },
+    "wordpress-install-dir": "web/wp"
+  },
+  "scripts": {
+    "add-database": "php create_database.php",
+    "dev": "php -S 192.168.1.79:4004 -t public"
+  },
+  "note": {
+    "git-remove-origin": "git remote remove origin",
+    "rename-folder": "rename folder with the name of the project",
+    "git-init": "git init",
+    "to-start": "composer update",
+    "to-add-database": "composer run-script add-database -- writeNewDatabaseName",
+    "get-ready": "composer run-script dev",
+
+    "to-install-only-dependencies": "composer install --no-scripts"
+  }
+}
